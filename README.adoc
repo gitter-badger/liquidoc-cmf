@@ -20,32 +20,31 @@ endif::[]
 :guide_admin: true
 :ldcmf_site_base_url: https://www.ajyl.org
 
-This repo contains the bootstrapping files and instructions for a _content management framework_ (CMF) designed for documenting software projects.
-Combining open-source tools with collaborative workflows, *LiquiDoc CMF* facilitates writing, editing, coordinating, and deploying technical docs in Git-managed, extensible codebases.
+This repo contains the bootstrapping files and instructions for a _content management framework_ (CMF) designed for documenting software applications.
+Combining open-source tools with collaborative workflows, *LiquiDoc CMF* facilitates writing, editing, coordinating, and deploying technical docs in fully extensible, Git-managed codebases.
 
-LiquiDoc CMF (*LDCMF*) incorporates two excellent lightweight markup languages (link:http://asciidoctor.org/docs/what-is-asciidoc/[AsciiDoc] and link:https://github.com/darvid/trine/wiki/YAML-Primer[YAML]) with open-source build and publish utilities (link:https://git-scm.com/book/en/v2/Getting-Started-Git-Basics[Git], link:http://asciidoctor.org/[Asciidoctor], and link:http://idratherbewriting.com/2015/02/27/static-site-generators-start-to-displace-online-cmss/[Jekyll]).
-All this is stitched together seamlessly using Liquid templating markup using a wrapper utility called link:https://github.com/briandominick/liquidoc-gem[*LiquiDoc*].
-This creates a truly open, highly portable and extensible system for developing and maintaining _docs code_ the way programmers develop and maintain _product code_.
+LiquiDoc CMF (*LDCMF*) incorporates two excellent lightweight markup languages (link:http://asciidoctor.org/docs/what-is-asciidoc/[AsciiDoc] and link:https://github.com/darvid/trine/wiki/YAML-Primer[YAML]) with open-source build and publish utilities (link:http://asciidoctor.org/[Asciidoctor], and link:http://idratherbewriting.com/2015/02/27/static-site-generators-start-to-displace-online-cmss/[Jekyll]).
+All this is stitched together seamlessly with Liquid templating markup and coordinated by a docs build utility called link:https://github.com/DocOps/liquidoc-gem[*LiquiDoc*].
+This creates a truly open, highly portable and scalable system for developing _docs code_ the way programmers develop _product code_.
 
 To learn much more about LiquiDoc CMF and its technology ecosystem (the “AJYL docstack”), link:{ldcmf_site_base_url}/liquidoc-cmf[check out this introduction].
-The remainder of this document assumes you wish to implement the LDCMF _framework_ for a project of your own.
+The remainder of this document assumes you wish to implement the LDCMF _framework_ for a project of your own and instructs the bootstrapping of an appropriate LDCMF environment.
 
 == Usage
 
 [IMPORTANT]
 link:{ldcmf_site_base_url}/liquidoc-cmf-guides/admin[*Complete documentation for LDCMF administration is available here.*]
-This guide offers the canonical, basic __init__ialization and bootstrap instructions, in case you are familiar with LDCMF and need to get up and running rapidly.
 
-The following procedure is a *bootstrapping operation* to get an _actual LDCMF-based project_ started.
-It further sets up initial files based on custom preferences.
+The following procedure is a *bootstrapping operation* to get an _actual LDCMF-based project_ up and running.
+It sets up some initial demonstration files based on custom preferences and inflate directories.
 link:https://www.ajyl.org/liquidoc-cmf-guides/admin/setup-initialize-docs-env[More thorough setup instructions are available] and highly recommended.
 
 [WARNING]
-This file (`README.adoc`) is the README for the generic LiquiDoc CMF project bootstrap repository.
-If you wish to keep this file, move/rename it _before_ running the bootstrap, which generates a proper `README.adoc` for your _actual docs project_, which this directory and its contents then _becomes_.
+The file you are reading (`README.adoc`) is the README for the _generic LiquiDoc CMF project_ bootstrap repository.
+The procedure it instructs will convert its current generic bootstrap context into your own LDCMF project application.
+If you wish to keep this file, move/rename it _before_ running the bootstrapping _init_, since that operation generates a proper `README.adoc` for your _actual docs project_, which this directory and its contents _will then be_.
 
-If you have link:https://git-scm.com/book/en/v2/Getting-Started-Installing-Git[Git] (for Windows: link:https://git-scm.com/download/win[GitBash]) and link:https://www.ruby-lang.org/en/downloads/[Ruby runtime] installed, you can get going with LiquiDoc CMF in a few quick steps.
-Windows users should also have GitBash or link:http://www.cygwin.com/[Cygwin].
+If you have link:https://git-scm.com/book/en/v2/Getting-Started-Installing-Git[Git] (for Windows: link:https://git-scm.com/download/win[GitBash] or a Linux emulator like link:http://www.cygwin.com/[Cygwin]) and link:https://www.ruby-lang.org/en/downloads/[Ruby runtime] installed, you can get going with LiquiDoc CMF using this guide.
 
 // tag::bootstrap-steps[]
 === Establish the Environment
@@ -128,9 +127,9 @@ This file may confuse future users; we advise removing it before sharing your LD
 +
 In your favorite text/code editor, open `data/meta.yml` and fill out the required info, then *save the file*.
 
-. Initialize your custom environment.
+. *Initialize your custom environment.*
 [lowerroman]
-.. Generate an initialization config.
+.. Generate an _initialization config_.
 +
 [source,shell]
 ----
@@ -139,7 +138,7 @@ bundle exec liquidoc --template _init/templates/init.yaml --data data/meta.yml -
 +
 This command invokes barest LiquiDoc, which performs a one-off template parsing.
 
-.. Generate infrastructure files based on your custom preferences.
+.. Generate _infrastructure files_ based on your custom preferences.
 +
 [source,shell]
 ----
@@ -234,11 +233,9 @@ If it brands your company, it probably goes in `theme/assets/`.
 
 content/pages/:::
 For AsciiDoc files of the _page_ content type.
-See <<{XREF_source-content-types}>>.
 
 content/snippets/:::
 For content _snippets_.
-See <<snippets>>.
 
 content/topics/:::
 For AsciiDoc files of the core _topic_ content type.
@@ -327,8 +324,6 @@ LDCMF tries to balance both without requiring either, but each final rendering o
 [NOTE]
 .Coming Soon
 Slide presentations!
-
-=== LDCMF Principles
 
 Maintain no built files in source control.::
 If a file is the product of data from other source files, generate that file at build time, and do not commit it to source.
