@@ -1,16 +1,16 @@
 # This is the Jekyll configuration file
-title: AJYL DocLabs
-description: A build tool for docs-as-code
+title: {{product_suite_name}} Portals
+description: The documentation for {{project_subjects_list}}
 output: web
-source: _build
+source: {{project_build_dir}}
 host: 127.0.0.1
-port: 4009
+port: {{local_serve_port}}
 destination: site
 
 data_dir:     data
 plugins_dir:  _plugins
-layouts_dir:  _build/theme/docutheme/_layouts
-includes_dir: theme/docutheme/_includes
+layouts_dir:
+includes_dir:
 images_dir:   assets/images
 css_dir:      theme/css
 theme_common_dir: theme
@@ -25,78 +25,4 @@ asciidoctor:
 
 
 # File management
-keep_files:
 encoding: "utf-8"
-markdown_ext: "markdown,mkdown,mkdn,mkd,md"
-
-# Conversion
-markdown: kramdown
-highlighter: rouge
-lsi: false
-excerpt_separator: "\n\n"
-incremental: false
-
-# Markdown Processing
-kramdown:
-  input: GFM
-  hard_wrap: false
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  smart_quotes: lsquo,rsquo,ldquo,rdquo
-  enable_coderay: false
-
-
-# Sass/SCSS
-sass:
-  sass_dir: theme/jekyllnow/_sass
-  style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
-
-# Plugins
-plugins:
-  - jekyll-asciidoc
-
-# mimic GitHub Pages with --safe
-whitelist:
-  - jekyll-asciidoc
-
-# Jekyll Documentation Theme settings
-sidebars:
-- home_sidebar
-
-# this appears in the html browser tab for the site title (seen mostly by search engines, not users)
-feedback_disable: true
-
-
-defaults:
-  -
-    scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: "page"
-      comments: true
-      search: true
-      sidebar: home_sidebar
-      topnav: topnav
-  -
-    scope:
-      path: ""
-      type: "tooltips"
-    values:
-      layout: "page"
-      comments: true
-      search: true
-      tooltip: true
-
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-      comments: true
-      search: true
-      sidebar: home_sidebar
-      topnav: topnav
