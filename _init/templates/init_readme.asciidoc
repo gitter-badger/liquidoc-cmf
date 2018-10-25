@@ -1,6 +1,16 @@
 = {{ product_suite_name }} Documentation
+// This AsciiDoc file must be rendered to be properly viewed.
+// The easiest way to view it rendered is on GitHub at
+// https://github.com/DocOps/liquidoc-cmf
+// OR copy and paste these contents into
+// https://asciidoclive.com
+// BELOW is all AsciiDoc formatting:
+// https://asciidoctor.org/docs/what-is-asciidoc/
+//
+// Document attributes (variables)
 :docs_build_command_basic: bundle exec liquidoc -c {{ project_config_dir }}/{{ project_config_file }}
-
+//
+// Document content
 This documentation {{ space_type }} uses a docs-as-code framework called link:https://www.ajyl.org/liquidoc-cmf[LiquiDoc CMF].
 
 == Overview
@@ -52,3 +62,5 @@ If Bundler is not installed, run `gem install bundler`, then repeat this command
 ----
 {docs_build_command_basic}
 ----
+
+This procedure should generate files in the `_build/docs/` directory.

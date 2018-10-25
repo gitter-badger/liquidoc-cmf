@@ -8,13 +8,17 @@
 # This common meta file must remain "flat" -- only simple key/value pairs allowed
 # Values may be boolean, string, numeric, or float -- no arrays or structures
 project_name: Test Proj
+
 # The products/technologies documented by THIS docs project, as a phrase:
 project_subjects_list: This, That, the Other Thing(TM)
+
 # The proper name for the products/technologies documented, as a phrase
 # (may be same as project_subjects_list:
 product_suite_name: The Things
+
 # An optional shorter version of product_suite_name:
 product_suite_name_short: TheThings
+
 # The space_type refers to where/how THIS project resides, either:
 # * repo   | Docs have their own repository with no parent.
 # * colo   | Docs are collocated inside the product repository.
@@ -22,6 +26,7 @@ product_suite_name_short: TheThings
 #          For collocated (colo) setups, this project may have its own folder
 #           or reside in a submodule (subordinate repository).
 space_type: repo
+
 # The subj_rel defines how THIS docs repo relates to the documented subjects:
 # * parent    | Products are all submodules of the docs (recommended)
 # * submod    | Docs are in a Git submodule subordinate to all product repos
@@ -29,27 +34,37 @@ space_type: repo
 # * none      | The product repo and docs repo are technically unrelated.
 # * mashup    | It's complicated.
 subj_rel: parent
-# Project git repo origin URI
-#
+
+# THIS projet's git repo origin address
 project_git_repo_origin_uri: git@github.com:yourghuname/test-project.git
 
 # The name of the root project directory, relative to the clone point
+# By default this is the filename of your Git repo
+# Ex: repo-name.git would have a project_root_dir: repo-name.
 project_root_dir: test-project
 
 # The path to THIS project from repository root if space_type is 'colo'
 # Leave blank if the project_root_dir is the entire docs dir
 docs_root_path:
+
 # Location of THIS project's config files (LiquiDoc, Jekyll, Asciidoctor, etc):
 project_config_dir: _configs
+
 # THIS project's LiquiDoc build configuration file:
 project_config_file: build-docs.yml
+
+# The base directory into which prebuilding and final artifacts are generated
 project_build_dir: _build
+
+# The local port at which your Jekyll development instance is served
+# Conventionally in the 3000-4999 range; just avoid conflicting with
+# any other running local HTTP server
 local_serve_port: 4999
 
 # The above entries will generate project_config
 portals_base_path: portals
 
-
+# Company info
 company_name_official: We Make Code, Inc
 company_name_short: WEEEMC
 company_address_street: 0 Nowhere Lane
