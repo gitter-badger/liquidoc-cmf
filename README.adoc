@@ -146,10 +146,8 @@ This command performs a one-off template parsing to establish the temporary _ini
 bundle exec liquidoc -c _init/init.yml
 ----
 +
-This procedure builds starter files (and inflates directories), including a new `README.adoc` and `content/index.adoc`.
-
-You should now have a `_configs/` directory containing LiquiDoc, Asciidoctor, and Jekyll config files.
-If your initialization steps proceeded without errors, you should have a successful rudimentary LDCMF codebase.
+This procedure builds starter files (and inflates directories).
+If your initialization steps proceeded without errors, you now have a successful rudimentary LDCMF codebase, starting with a `_configs/` directory containing LiquiDoc, Asciidoctor, and Jekyll config files, as well as new `README.adoc` and `content/index.adoc` files.
 You can make changes to `data/meta.yml` and re-run the liquidoc commands until you approve of the results.
 
 === Build the Docs
