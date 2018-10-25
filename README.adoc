@@ -137,7 +137,7 @@ In your favorite text/code editor, open `data/meta.yml` and fill out the require
 bundle exec liquidoc --template _init/templates/init.yaml --data data/meta.yml --output _init/init.yml
 ----
 +
-This command performs a one-off template parsing to establish the temporary _init_ config file.
+This command performs a one-off template parsing to establish the temporary _init_ config file, responding with a message that your `_init/init.yml` was built.
 
 .. Generate _infrastructure files_ based on your custom preferences.
 +
