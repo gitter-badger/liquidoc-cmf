@@ -130,7 +130,7 @@ In your favorite text/code editor, open `data/meta.yml` and fill out the require
 
 . *Initialize your custom environment.*
 [lowerroman]
-.. Generate an _initialization config_.
+.. Generate an _initialization config_ based on the custom preferences in `meta.yml`.
 +
 [source,shell]
 ----
@@ -139,7 +139,7 @@ bundle exec liquidoc --template _init/templates/init.yaml --data data/meta.yml -
 +
 This command performs a one-off template parsing to establish the temporary _init_ config file, responding with a message that your `_init/init.yml` was built.
 
-.. Generate _infrastructure files_ based on your custom preferences.
+.. Generate _infrastructure files_ using your temporary init config.
 +
 [source,shell]
 ----
@@ -148,8 +148,9 @@ bundle exec liquidoc -c _init/init.yml
 +
 This procedure builds starter files (and inflates directories), including a new `README.adoc` and `content/index.adoc`.
 
+You should now have a `_configs/` directory containing LiquiDoc, Asciidoctor, and Jekyll config files.
 If your initialization steps proceeded without errors, you should have a successful rudimentary LDCMF codebase.
-
+You can make changes to `data/meta.yml` and re-run the liquidoc commands until you approve of the results.
 
 === Build the Docs
 
