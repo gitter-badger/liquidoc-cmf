@@ -293,7 +293,6 @@ This would also be the home of PDF and slideshow output theme configurations, as
 theme/pdf-theme.yml::
 A very basic PDF theming file based on Asciidoctor's link:https://github.com/asciidoctor/asciidoctor-pdf/blob/master/data/themes/default-theme.yml[*default-theme.yml*], just to get you started.
 For more about PDF theming, see the link:https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc[Asciidoctor PDF Theming Guide].
-
 // end::architecture-descriptions[]
 
 == Build Config
@@ -302,7 +301,7 @@ The `_configs/build-docs.yml` file is the brains of any LDCMF application.
 It defines the sequential compilation routine and ensures all assets are in place for the final artifact rendering operations.
 
 === LDCMF Build Strategies
-
+// tag::build-strategies[]
 LiquiDoc CMF isn't much without its ability to maintain strictly “DRY” single sourcing while still producing diverse output.
 
 Store small data in flat files.::
@@ -347,6 +346,7 @@ The rule pertains to content files generated at build time, not files manually g
 Keep functional code out of AsciiDoc source::
 Perform heavy processing up front as prebuilding, then include those prebuilt files during render phases.
 While jekyll-asciidoc enables Liquid preprocessing in AsciiDoc files, LDCMF prefers prebuilding so the generated files can service more than Jekyll builds.
+// end::build-strategies[]
 
 == Contributing
 
