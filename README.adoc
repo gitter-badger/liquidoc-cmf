@@ -147,7 +147,7 @@ bundle exec liquidoc -c _init/init.yml
 ----
 +
 This procedure builds starter files (and inflates directories).
-If your initialization steps proceeded without errors, you now have a successful rudimentary LDCMF codebase, starting with a `_configs/` directory containing LiquiDoc, Asciidoctor, and Jekyll config files, as well as new `README.adoc` and `content/index.adoc` files.
+If your initialization steps proceeded without errors, you now have a codebase that serves as the skeleton for an LDCMF implementation, starting with a `_configs/` directory containing LiquiDoc, Asciidoctor, and Jekyll config files, as well as new `README.adoc` and `content/index.adoc` files.
 You can make changes to `data/meta.yml` and re-run the liquidoc commands until you approve of the results.
 
 === Build the Docs
@@ -209,9 +209,9 @@ Here is the basic directory structure of an initial LiquiDoc CMF project once th
 
 // tag::architecture-descriptions[]
 _build/::
-This is where all processed files end up, whether we're talking migrated assets, prebuilt source, or final artifacts.
+This is where all processed files end up, including all migrated assets, prebuilt source, or final artifacts.
 This directory is _not_ tracked in source control, so you will not see it until you run a build routine, and you cannot commit changes made to it.
-It is always safe to fully delete this directory in your local workspace.
+It is always safe to delete this directory in your local workspace.
 We will explore the `_build/` directory more fully later.
 
 ifdef::guide_admin[]
@@ -271,18 +271,21 @@ For _this project_ (LDCMF Guides), the _guides_ are oriented toward _audiences_ 
 [TIP]
 Favoring the filename `products.yml` is conventional when products and guides (portals) have a 1:1 relationship and `guides.yml` file is superfluous.
 
-data/schema.yml:::
-Can also be `data/manifest.yml`, this crucial file provides, central manifest of all page-forming content items (pages, topics) and how they are organized (metadata such as categories into which content items fall).
-The schema file carries essential build info that lets us see relationships between topics and build content-exclusive portals from otherwise fairly dumb, decontextualized repositories.
+data/manifest.yml:::
+This crucial file provides a central manifest of all page-forming content items (pages, topics).
+It dictates how they are organized in the site navigation (using metadata such as categories into which content items fall).
+The schema file carries essential build info that lets us see relationships between topics and build content-exclusive portals from otherwise-decontextualized repositories.
+Sometimes `data/schema.yml`, deprecated in favor of `manifest.yml`.
 
 data/terms.yml:::
 By no means a required file, `terms.yml` is a great example of a file that is really just for content.
-You can have as many of these key-value files, serving whatever purposes you may wish.
+You can have as many of these key-value files, serving whatever purposes you wish.
 
 products/::
 This is an optional path for LDCMF projects.
-If you plan to embed your product repos as submodules, the `products/` directory is the base path to stick them in.
-For LDCMF Guides, this path effectively leads to symlinks for the LiquiDoc and LDCMF repos, so any files within those repos are accessible to be drawn into our docs.
+If you plan to embed your product repos as submodules, put them in the `products/` directory.
+Submodules are like shortcuts to those embedded repositories -- if you navigate into them, you can perform Git operations.
+Submodules are typically used to ensure product repos are reliably available and properly checked out, generally in order to support migrating files into the build directory.
 
 theme/::
 All the files that structure your output displays go here.
@@ -304,13 +307,16 @@ It defines the sequential compilation routine and ensures all assets are in plac
 LiquiDoc CMF isn't much without its ability to maintain strictly “DRY” single sourcing while still producing diverse output.
 
 Store small data in flat files.::
-Most of the data about products is not best stored in relational databases -- it is not used live, schemas mostly get in the way, and version control is essential.
+When we talk about _product metadata_, we are referring to information _about_ a software product, not any kind of data stored by that product.
+Consider what data matters about products: capacities, dependencies, options, integrations, and anything classifiable as metadata, including information about the product developer.
+Then consider how these things change as products evolve -- every version has its own array of the above attributes, and the list can only be expected to grow and morph.
+Data of this kind is not best stored in relational databases; it is not used live, schemas would mostly get in the way, and version control is essential.
 If you want to keep your product info in Git, use appropriate flat-file formats for various representations.
 The human-friendliest formats are probably YAML and CSV.
-YAML can be edited in any decent code editor, and CSV can be edited in a plethora of spreadsheet applications.
+YAML can be edited in any decent code editor, and a comma-separated values file can be edited in any spreadsheet application.
 
 Share product data with the product.::
-Ideally, that small data we just agreed to store as flat files should be kept in one canonical place, from which it is read by the docs and the product build routines, ensuring docs references reflect the current truth about the product.
+Ideally, that small data stored in flat files should be kept in one canonical place, from which it is read by the docs and the product build routines, ensuring docs references reflect the current truth about the product.
 
 Prebuild and include complex reference content.::
 All that small data needs to make it into your docs in a more human-readable format.
@@ -319,7 +325,7 @@ Use Liquid templates to generate includable AsciiDoc files into the `_build/snip
 Then include them into your static AsciiDoc files.
 
 Handle major divergence by configuring output into “guides”.::
-Major points of divergence in output needs -- such as significantly different “editions” of the same product or highly variant audiences, like basic vs advanced users or consumers vs developers -- each necessitates its own _guide_.
+When there are major points of divergence in output requirements -- such as significantly different “editions” of the same product or highly variant audiences, like basic vs advanced users or consumers vs developers -- each splinter necessitates its own _guide_.
 Guides are built sequentially, each drawing configuration settings and content designated for it, along with content and data common to other guides.
 This process generates parallel guides, including Web portals that are built side by side and served as components of one site.
 
@@ -327,7 +333,7 @@ Handle output-format diversity with “portals” and “manuals”.::
 A lot of the conflict in documentation output stems from the manuals vs portals debate.
 Modern websites tend to work best by presenting content in semi-serialized or unserialized article format, more like Wikipedia than a book.
 Meanwhile, technical documentation is often still intended to be consumed more like a book or a traditional manual.
-LDCMF tries to balance both without requiring either, but each final rendering operation is technically building a book-style _manual_ or a help-site/wiki-style _portal_, even if you are eventually deploying both.
+LDCMF tries to balance both without requiring either, but each final rendering action is technically building either a book-style _manual_ or a help-site/wiki-style _portal_.
 
 [NOTE]
 .Coming Soon

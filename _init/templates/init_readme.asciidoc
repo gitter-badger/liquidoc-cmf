@@ -63,4 +63,4 @@ If Bundler is not installed, run `gem install bundler`, then repeat this command
 {docs_build_command_basic}
 ----
 
-This procedure should generate files in the `_build/docs/` directory.
+This procedure generates files in the `_build/docs/` directory.

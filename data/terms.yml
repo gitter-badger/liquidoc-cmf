@@ -16,13 +16,13 @@ terms:
   ref: https://jamstack.org/
 
 - term: Jekyll
-  def: A popular static-site generator capable of building entire websites out of AsciiDoc and YAML source, among lots more.
+  def: A popular static-site generator capable of building entire websites out of AsciiDoc and YAML source, among other formats.
   ref: https://jekyllrb.com/
 
 - term: Liquid
-  def: Open source templating markup language maintained by Shopify
+  def: Open source templating markup language maintained by Shopify.
   ref: https://shopify.github.io/liquid/
 
 - term: YAML
-  def: A slightly dynamic, semi-structured data format for key-value pairs and nested objects
+  def: A slightly dynamic, semi-structured data format for key-value pairs and nested objects.
   ref: http://searchitoperations.techtarget.com/definition/YAML-YAML-Aint-Markup-Language
