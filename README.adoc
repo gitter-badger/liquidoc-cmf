@@ -12,10 +12,7 @@
 // elsewhere in this repository or in other repos.
 // In LDCMF, README files are used for core canonical
 // information about the codebases/products they serve.
-:this: this
-ifdef::this_ldcmf_repo[]
-:this: {this_ldcmf_repo}
-endif::[]
+:subject_repo: this
 // this setting makes this file in line with parent repo
 :guide_admin: true
 :ldcmf_site_base_url: https://www.ajyl.org
@@ -36,7 +33,7 @@ The remainder of this document assumes you wish to implement the LDCMF _framewor
 link:{ldcmf_site_base_url}/liquidoc-cmf-guides/admin[*Complete documentation for LDCMF administration is available here.*]
 
 The following procedure is a *bootstrapping operation* to get an _actual LDCMF-based project_ up and running.
-It sets up some initial demonstration files based on custom preferences and inflate directories.
+It inflates directories and sets up some initial demonstration files based on preferences you will customize.
 link:https://www.ajyl.org/liquidoc-cmf-guides/admin/setup-initialize-docs-env[More thorough setup instructions are available] and highly recommended.
 
 [WARNING]
@@ -63,7 +60,7 @@ cd Documents/workspace
 cd Documents/workspace/my-product
 ----
 
-. *Clone {this} repo.*
+. *Clone {subject_repo} repo.*
 +
 [subs="quotes"]
 .Example
@@ -207,7 +204,7 @@ Here is the basic directory structure of an initial LiquiDoc CMF project once th
 └── README.adoc
 ----
 
-// tag::architecture-descriptions[]
+// tag::architecture-definitions[]
 _build/::
 This is where all processed files end up, including all migrated assets, prebuilt source, or final artifacts.
 This directory is _not_ tracked in source control, so you will not see it until you run a build routine, and you cannot commit changes made to it.
@@ -292,10 +289,10 @@ All the files that structure your output displays go here.
 This mainly includes Jekyll templates (`themes/<theme-name>/_includes/` and `themes/<theme-name>/_layouts/`) and asset files such as stylesheets, front-end javascripts, and of course theme-related images.
 This would also be the home of PDF and slideshow output theme configurations, as applicable.
 
-theme/pdf-theme.yml::
+theme/pdf-theme.yml:::
 A very basic PDF theming file based on Asciidoctor's link:https://github.com/asciidoctor/asciidoctor-pdf/blob/master/data/themes/default-theme.yml[*default-theme.yml*], just to get you started.
 For more about PDF theming, see the link:https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc[Asciidoctor PDF Theming Guide].
-// end::architecture-descriptions[]
+// end::architecture-definitions[]
 
 == Build Config
 
@@ -310,9 +307,9 @@ Store small data in flat files.::
 When we talk about _product metadata_, we are referring to information _about_ a software product, not any kind of data stored by that product.
 Consider what data matters about products: capacities, dependencies, options, integrations, and anything classifiable as metadata, including information about the product developer.
 Then consider how these things change as products evolve -- every version has its own array of the above attributes, and the list can only be expected to grow and morph.
-Data of this kind is not best stored in relational databases; it is not used live, schemas would mostly get in the way, and version control is essential.
+Data of this kind is -- *small data* -- *is not best stored in relational databases*; version control is essential and schemas get in the way, especially since none of the data is served live.
 If you want to keep your product info in Git, use appropriate flat-file formats for various representations.
-The human-friendliest formats are probably YAML and CSV.
+The human-friendliest formats are probably *YAML* and *CSV*.
 YAML can be edited in any decent code editor, and a comma-separated values file can be edited in any spreadsheet application.
 
 Share product data with the product.::
@@ -326,6 +323,7 @@ Then include them into your static AsciiDoc files.
 
 Handle major divergence by configuring output into “guides”.::
 When there are major points of divergence in output requirements -- such as significantly different “editions” of the same product or highly variant audiences, like basic vs advanced users or consumers vs developers -- each splinter necessitates its own _guide_.
+In these cases, you want to direct users to the appropriate docset, as well as make it easy for those who land in the wrong guide to switch to a similar place in the parallel guide.
 Guides are built sequentially, each drawing configuration settings and content designated for it, along with content and data common to other guides.
 This process generates parallel guides, including Web portals that are built side by side and served as components of one site.
 
