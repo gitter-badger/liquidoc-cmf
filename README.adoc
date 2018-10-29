@@ -1,10 +1,9 @@
-= LiquiDoc CMF
 // This AsciiDoc file must be rendered to be properly viewed.
 // The easiest way to view it rendered is on GitHub at
 // https://github.com/DocOps/liquidoc-cmf
 // OR copy and paste these contents into
 // https://asciidoclive.com
-// BELOW is all AsciiDoc formatting:
+// Everthing BELOW is formatted in AsciiDoc syntax:
 // https://asciidoctor.org/docs/what-is-asciidoc/
 // NOTE:
 // Some markup in this README is intended to work with
@@ -12,10 +11,12 @@
 // elsewhere in this repository or in other repos.
 // In LDCMF, README files are used for core canonical
 // information about the codebases/products they serve.
+= LiquiDoc CMF
 :subject_repo: this
 // this setting makes this file in line with parent repo
 :guide_admin: true
 :ldcmf_site_base_url: https://www.ajyl.org
+:toc: macro
 
 This repo contains the bootstrapping files and instructions for a _content management framework_ (CMF) designed for documenting software applications.
 Combining open-source tools with collaborative workflows, *LiquiDoc CMF* facilitates writing, editing, coordinating, and deploying technical docs in fully extensible, Git-managed codebases.
@@ -23,6 +24,8 @@ Combining open-source tools with collaborative workflows, *LiquiDoc CMF* facilit
 LiquiDoc CMF (*LDCMF*) incorporates two excellent lightweight markup languages (link:http://asciidoctor.org/docs/what-is-asciidoc/[AsciiDoc] and link:https://github.com/darvid/trine/wiki/YAML-Primer[YAML]) with open-source build and publish utilities (link:http://asciidoctor.org/[Asciidoctor], and link:http://idratherbewriting.com/2015/02/27/static-site-generators-start-to-displace-online-cmss/[Jekyll]).
 All this is stitched together seamlessly with Liquid templating markup and coordinated by a docs build utility called link:https://github.com/DocOps/liquidoc-gem[*LiquiDoc*].
 This creates a truly open, highly portable and scalable system for developing _docs code_ the way programmers develop _product code_.
+
+toc::[]
 
 To learn much more about LiquiDoc CMF and its technology ecosystem (the “AJYL docstack”), link:{ldcmf_site_base_url}/liquidoc-cmf[check out this introduction].
 The remainder of this document assumes you wish to implement the LDCMF _framework_ for a project of your own and instructs the bootstrapping of an appropriate LDCMF environment.
@@ -301,7 +304,8 @@ It defines the sequential compilation routine and ensures all assets are in plac
 
 === LDCMF Build Strategies
 // tag::build-strategies[]
-LiquiDoc CMF isn't much without its ability to maintain strictly “DRY” single sourcing while still producing diverse output.
+The strength of LiquiDoc CMF its ability to maintain strictly “DRY” single sourcing while still producing diverse output.
+These strategic principles are key to maintaining this capability.
 
 Store small data in flat files.::
 When we talk about _product metadata_, we are referring to information _about_ a software product, not any kind of data stored by that product.
@@ -332,10 +336,10 @@ A lot of the conflict in documentation output stems from the manuals vs portals 
 Modern websites tend to work best by presenting content in semi-serialized or unserialized article format, more like Wikipedia than a book.
 Meanwhile, technical documentation is often still intended to be consumed more like a book or a traditional manual.
 LDCMF tries to balance both without requiring either, but each final rendering action is technically building either a book-style _manual_ or a help-site/wiki-style _portal_.
-
++
 [NOTE]
 .Coming Soon
-Slide presentations!
+JavaScript-driven slide presentations!
 
 [[rule-no-built-files]]
 Maintain no built files in source control.::
