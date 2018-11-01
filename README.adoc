@@ -12,6 +12,8 @@
 // In LDCMF, README files are used for core canonical
 // information about the codebases/products they serve.
 = LiquiDoc CMF
+
+image:https://badges.gitter.im/liquidoc-cmf/Lobby.svg[link="https://gitter.im/liquidoc-cmf/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"]
 :subject_repo: this
 // this setting makes this file in line with parent repo
 :guide_admin: true
